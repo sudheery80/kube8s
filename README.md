@@ -1,11 +1,14 @@
 # kube8s
 1. Create the configmap first used by postgres db -- we can use secret instead of configmap which is more secure
+   
    kubectl apply -f postgres-config.yaml 
 
 2. Create the persistent volume and volume claim needed by the postgres database
+   
    kubectl apply -f postgres-pvol.yaml
    
 3. Deploy the postgres database and its service exposed using nodeport type
+   
    kubectl apply -f postgres-deployment.yaml
    
    Verify postgres is installed properly using below commands
@@ -15,6 +18,7 @@
    -- for port get kubectl get svc postgres and use the nodeport from the result
    
 4. Deploy nginx and its service exposed as loadbalance port type
+   
    kubectl apply -f postgres-deployment.yaml
 
 5. To verify connectivity to postgres db from nginx, we can use a custom docker file image for nginx which install the prerequistes.

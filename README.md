@@ -1,5 +1,5 @@
 # kube8s
-1. Create the configmap first used by postgres -- we can use secret instead of configmap which is more secure
+1. Create the configmap first used by postgres db -- we can use secret instead of configmap which is more secure
    kubectl apply -f postgres-config.yaml 
 
 2. Create the persistent volume and volume claim needed by the postgres database

@@ -12,7 +12,9 @@
    kubectl apply -f postgres-deployment.yaml
    
    Verify postgres is installed properly using below commands
+   
    apt-get install -y postgresql-client #... install psql client
+   
    psql -h localhost -U 'postgresadmin' -p 31990 postgresdb -c '\du' 
    -- for localhost get ip from cluster-info and use it
    -- for port get kubectl get svc postgres and use the nodeport from the result

@@ -1,5 +1,5 @@
 # kube8s
-Create a Service and expose it
+<<<<<.....Create a Service and expose it......>>>>
 1. Create configmap first used by postgres db -- we can use secret instead of configmap which is more secure
    
    kubectl apply -f postgres-config.yaml 
@@ -24,7 +24,7 @@ Create a Service and expose it
    
    kubectl apply -f postgres-deployment.yaml
 
-Create a Route in Openshift kubernetes platform
+<<<<<.....Create a Route in Openshift kubernetes platform......>>>>
 1. Create nginx deploymentconfig using nginx-proxy.yaml
    
    oc apply -f nginx-proxy.yaml

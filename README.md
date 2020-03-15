@@ -1,13 +1,14 @@
 # kube8s
-1. Create the configmap first used by postgres db -- we can use secret instead of configmap which is more secure
+Create a Service and expose it
+1. Create configmap first used by postgres db -- we can use secret instead of configmap which is more secure
    
    kubectl apply -f postgres-config.yaml 
 
-2. Create the persistent volume and volume claim needed by the postgres database
+2. Create persistent volume and volume claim needed by the postgres database
    
    kubectl apply -f postgres-pvol.yaml
    
-3. Deploy the postgres database and its service exposed using nodeport type
+3. Deploy postgres database and its service exposed using nodeport type
    
    kubectl apply -f postgres-deployment.yaml
    
@@ -23,6 +24,24 @@
    
    kubectl apply -f postgres-deployment.yaml
 
-5. To verify connectivity to postgres db from nginx, we can use a custom docker file image for nginx which install the prerequistes.
-   We can try using initcontainer or poststart container lifecycle hook for initialization.
+Create a Route in Openshift kubernetes platform
+1. Create nginx deploymentconfig using nginx-proxy.yaml
    
+   oc apply -f nginx-proxy.yaml
+
+2. Expose the deploymentconfig as a service
+   
+   oc create service clusterip nginx-proxy --tcp=80:80
+
+3. Create routes using nginx-proxy-route.yaml
+   
+   oc apply -f nginx-proxy-route.yaml
+   
+   we can check the routes are created and check the connectivity using curl with host
+   ex:oc get routes
+NAME                HOST/PORT                                           PATH      SERVICES      PORT      TERMINATION   WILDCARD
+nginx-proxy-edge    nginx-proxy-edge-myproject.192.168.99.101.nip.io              nginx-proxy   80-80     edge          None
+nginx-proxy-plain   nginx-proxy-plain-myproject.192.168.99.101.nip.io             nginx-proxy   80-80                   None
+
+
+

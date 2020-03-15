@@ -45,9 +45,5 @@
    
    ex:oc get routes
 
-NAME                HOST/PORT                                           PATH      SERVICES      PORT      TERMINATION   WILDCARD
-nginx-proxy-edge    nginx-proxy-edge-myproject.192.168.99.101.nip.io              nginx-proxy   80-80     edge          None
-nginx-proxy-plain   nginx-proxy-plain-myproject.192.168.99.101.nip.io             nginx-proxy   80-80                   None
-
 
 

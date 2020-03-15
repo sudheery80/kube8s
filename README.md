@@ -20,9 +20,13 @@
    -- for localhost get ip from cluster-info and use it
    -- for port get kubectl get svc postgres and use the nodeport from the result
    
-4. Deploy nginx and its service exposed as loadbalance port type
+4. Deploy nginx and its service exposed as loadbalancer port type
    
    kubectl apply -f postgres-deployment.yaml
+   
+5. We can get the svc details and curl the ip to check is nginx is working
+  
+   kubectl describe svc nginx-service
 
 <<<<<.....Create a Route in Openshift kubernetes platform......>>>>
 1. Create nginx deploymentconfig using nginx-proxy.yaml

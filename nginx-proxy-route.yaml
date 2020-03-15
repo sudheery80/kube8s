@@ -1,0 +1,27 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: nginx-proxy
+  name: nginx-proxy-plain
+spec:
+  port:
+    targetPort: 80-80
+  to:
+    kind: Service
+    name: nginx-proxy
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: nginx-proxy
+  name: nginx-proxy-edge
+spec:
+  port:
+    targetPort: 80-80
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: nginx-proxy

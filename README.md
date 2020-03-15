@@ -43,7 +43,7 @@
    
    we can check the routes are created and check the connectivity using curl with host
    
-   ex:oc get routes
+   oc get routes
 
 
 

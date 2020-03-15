@@ -1,0 +1,21 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: nginx-proxy
+  labels:
+    app: nginx-proxy
+  namespace: myproject
+spec:
+  replicas: 2
+  selector:
+    app: nginx-proxy
+  template:
+    metadata:
+      labels:
+        app: nginx-proxy
+    spec:
+      containers:
+      - name: nginx-proxy
+        image: openshift/origin-deployer:v3.11.0
+        ports:
+        - containerPort: 80
